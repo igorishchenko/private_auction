@@ -1,0 +1,8 @@
+<section class="navbar-form navbar-left">
+  <div class="input-group">
+     <input
+        (keyup)="searchTerm$.next($event.target.value)">
+  </div>
+  <app-search-results [searchFlag]="searchFlag" [results]="results"></app-search-results>
+</section>
+

@@ -1,0 +1,13 @@
+nav {
+    height: 60px;
+}
+li, a {
+    color: rgb(211, 205, 205);
+    font-size: 1.14em;
+}
+nav{
+    background:#464545;
+}
+.active {
+    background: hsla(0, 0%, 0%, 0.486);
+}

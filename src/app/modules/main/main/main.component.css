@@ -1,0 +1,15 @@
+.top-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72%;
+  margin: 0 auto;
+  flex-direction: column;
+}
+.top-container>section {
+  width: 50%;
+  margin: 0 auto;
+  padding: 5% 5%;
+  color: black;
+}

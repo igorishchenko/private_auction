@@ -1,0 +1,31 @@
+.top-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 72%;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.top-container>section {
+    width: 50%;
+    margin: 0 auto;
+    padding: 5% 5%;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(73, 72, 72, 0.7);
+}
+.top-container>section input{
+    background: rgba(255, 255, 255, 0.8);
+}
+.top-container>section a, button{
+    color: rgba(255, 255, 255, 0.8);
+}
+.top-container>button {
+    margin: 40px 0;
+    background: rgba(102, 96, 96, 0.527);
+    padding: 12px 80px;
+    border:none;
+    color: black;   
+    font-weight: bold;
+    cursor: pointer;
+}
