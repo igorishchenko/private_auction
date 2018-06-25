@@ -10,13 +10,13 @@
         </ng-template>
 
         <ng-template #authenticated>
-        <div>
-            <h3>Howdy, {{ user[0].displayName }}</h3>
-            <img [src]="user[0].photoURL">
-            <p>UID: {{ user[0].uid }}</p>
-            <p>Favorite Color: {{ user[0]?.favoriteColor }}</p>
-            <button (click)="auth.signOut()">Logout</button>
-        </div>
+            <div>
+                <h3>Howdy, {{ user[0].displayName }}</h3>
+                <img [src]="user[0].photoURL">
+                <p>UID: {{ user[0].uid }}</p>
+                <p>Favorite Color: {{ user[0]?.favoriteColor }}</p>
+                <button (click)="auth.signOut()">Logout</button>
+            </div>
         </ng-template>
     </section>
     <section *ngIf="defaultLogin">

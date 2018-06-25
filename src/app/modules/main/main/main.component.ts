@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from '../../../shared/models/user';
+import { User, googleUser } from '../../../shared/models/user';
 import { UserService } from '../../../shared/core/services/user.service';
+import { AuthService } from '../../../shared/core/services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -12,18 +13,28 @@ import { UserService } from '../../../shared/core/services/user.service';
 export class MainComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
+  googleUser = [];
+  loading = true;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private authService: AuthService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {
       this.loadAllUsers();
+      this.loadGoogleUser();
   }
 
   deleteUser(id: number) {
       this.userService.delete(id).pipe(first()).subscribe(() => { 
           this.loadAllUsers() 
+      });
+  }
+
+  private loadGoogleUser() {
+    this.authService.user.subscribe(data => {
+        this.googleUser.push(data);
+        this.loading = false;
       });
   }
 
