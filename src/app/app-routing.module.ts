@@ -21,8 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: './modules/user-login/user-login.module#UserLoginModule',
-    // canActivate: [AuthGuard]
+    loadChildren: './modules/user-login/user-login.module#UserLoginModule'
   },
   {
     path: 'profile',
@@ -31,8 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: './modules/register/register.module#RegisterModule',
-    // canActivate: [AuthGuard]
+    loadChildren: './modules/register/register.module#RegisterModule'
   },
 
   //othrwise redirect to home

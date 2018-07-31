@@ -1,0 +1,22 @@
+<section id="pdp-container" *ngIf="currentProduct">
+  <div class="breadcrumbs">
+    <ul class="breadcrumbs_collection">
+      <li class="breadcrumb"><a href="">Link 1</a></li>
+      <li class="breadcrumb"><a href="">Link 2</a></li>
+      <li class="breadcrumb current">{{ currentProduct.productName }}</li>
+    </ul>
+  </div>
+  <h1>{{ currentProduct.productName }}</h1>
+  <div class="pdp_left">
+      <img [src]="currentProduct.ingUrl" alt="" class="main_image" itemprop="image">
+  </div>
+  <div class="pdp_right">
+    <div class="description">
+      <p class="price" itemprop="price">{{ currentProduct.productPrice }}</p>
+      <p class="description" itemprop="description">{{ currentProduct.description }}</p>
+      <p class="sold_by">{{ currentProduct.user_name }}</p>
+      <p class="instruction">Each bid increasing price for 10%, in this case your price will be: <span>{{ currentProduct.productPrice * 1.1}}</span></p>
+      <button id="add-to-cart" (click)="" [disabled]="">Increase bid!</button>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AddItemService } from '../../../shared/core/services/add-item.service';
+import { Observable } from '../../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-customer-list',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private itemService: AddItemService) { }
+
+  allItems: any;
+
+  showPDP = true;
+  path = new RegExp('.*?customers\/[0-9]+');
+  showProducts = this.path.test(document.URL);
 
   ngOnInit() {
+    this.showPDP = true;
+
+    this.itemService.getAllItems().subscribe(data => {
+      this.allItems = data;
+    });    
+  }
+  
+  matchUrl(id): boolean {
+    if (typeof id === 'number')
+    this.showPDP = false;
+    return this.showPDP;
   }
 
 }

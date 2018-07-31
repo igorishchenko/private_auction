@@ -23,8 +23,6 @@ import { AlertComponent } from './_directives/alert/alert.component';
 import { AuthGuard } from './shared/core/auth.guard';
 import { UserService } from './shared/core/services/user.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './_helpers/jwt.interceptor';
-import { fakeBackendProvider } from './_helpers/fake-backend';
 
 @NgModule({
   declarations: [
@@ -46,19 +44,13 @@ import { fakeBackendProvider } from './_helpers/fake-backend';
     AngularFirestoreModule, 
     AngularFireAuthModule, 
     AngularFireStorageModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     SearchService,
     AuthService,
     AuthGuard,
     UserService, 
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true
-    },
-    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })

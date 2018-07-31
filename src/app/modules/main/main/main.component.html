@@ -1,14 +1,10 @@
 <section class="top-container">
-    <section *ngIf="currentUser">
-        <h1>Hi {{currentUser.firstName}}!</h1>
+    <section *ngIf="userInfo">
+        <h1>Hi {{userInfo.firstName}}!</h1>
         <p>You're logged in with Angular 6!!</p>
-        <h3>All registered users:</h3>
-        <ul>
-            <li *ngFor="let user of users">
-                {{user.username}} ({{user.firstName}} {{user.lastName}})
-                - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-            </li>
-        </ul>
+        <p>Your Profile!</p>
+        {{userInfo.username}} ({{userInfo.firstName}} {{userInfo.lastName}})
+        <!-- - <a (click)="deleteUser(user._id)" class="text-danger">Delete</a> -->
         <p><a [routerLink]="['/login']">Logout</a></p>
     </section>
     <section *ngIf="authService.user | async">
@@ -21,4 +17,5 @@
         </div>
     </section>
     <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <app-add-item></app-add-item>
 </section>

@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { Observable, of } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { switchMap, map } from 'rxjs/operators';
 
 interface UserGoogle {
@@ -24,6 +25,10 @@ interface UserGoogle {
 export class AuthService {
 
   user: Observable<UserGoogle>;
+  dbUser: any;
+  firstName: String;
+  lastName: String;
+  userName: String;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -76,12 +81,10 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>('/api/authenticate', { username: username, password: password })
+    return this.http.post<any>('http://localhost:8080/api/authenticate', { username: username, password: password })
       .pipe(map(user => {
-        //login succesful if there's a jwt token in the response
-        if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-        }
+        JSON.stringify(user);
+        this.dbUser = user;
         return user;
       }));
   }

@@ -4,6 +4,7 @@ import { first } from 'rxjs/operators';
 import { User, googleUser } from '../../../shared/models/user';
 import { UserService } from '../../../shared/core/services/user.service';
 import { AuthService } from '../../../shared/core/services/auth.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -11,13 +12,26 @@ import { AuthService } from '../../../shared/core/services/auth.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  currentUser: User;
+  currentUser: any;
   users: User[] = [];
   googleUser = [];
   loading = true;
+  userInfo: any;
+  userId: any;
 
   constructor(private userService: UserService, private authService: AuthService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if(localStorage.getItem('currentUser')){
+        this.userId = JSON.parse(localStorage.getItem('currentUser'))._id;
+    } else {
+        this.userId = this.authService.dbUser._id;
+    }
+    this.currentUser = this.userService.getById(this.userId);
+    this.currentUser.subscribe(currentUser=>{
+        localStorage.setItem('currentUser', JSON.stringify({ firstName: currentUser.firstName, lastName: currentUser.lastName, username: currentUser.username, _id: currentUser._id }));
+        this.userInfo = JSON.parse(localStorage.getItem('currentUser'));
+    });
+    this.userInfo = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {

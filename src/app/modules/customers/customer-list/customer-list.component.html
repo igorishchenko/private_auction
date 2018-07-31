@@ -1,3 +1,14 @@
-<p>
-  customer-list works!
-</p>
+<section id="collection-container" *ngIf="showPDP && !showProducts">
+  <div class="product_article product_1" *ngFor="let products of allItems; let i=index;">
+    <a [routerLink]="products.id" (click)="matchUrl(i)">
+      <img [src]="products.imgUrl" alt="">
+      <div class="description">
+        <a [routerLink]="products.id" class="product_link" itemprop="url">
+          <span itemprop="name">{{ products.productName }}</span>
+        </a>
+        <p class="product_price" itemprop="price">{{ products.productPrice }}</p>
+      </div>
+    </a>
+  </div>
+</section>
+<router-outlet></router-outlet>
