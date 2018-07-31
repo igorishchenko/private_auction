@@ -1,0 +1,9 @@
+save the bid from user {
+    currentBid,
+    user_id,
+    product_id, 
+    data
+}
+check if last bid was from 
+    { user_id: example == user_id }: example,
+then you can't bid, till someone else bided
