@@ -1,31 +1,35 @@
-<form [formGroup]="addItemForm" (ngSubmit)="onSubmit()">
+<div class="add__button" *ngIf="!addItemTrue">
+  <button (click)="addItemTrue = !addItemTrue">Add new Item</button>
+</div>
+
+<form *ngIf="addItemTrue" [formGroup]="addItemForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label class="center-block">Product name:
-      <input class="form-control" formControlName="productName">
+      <input type="text" class="form-control" formControlName="productName" required="required">
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Product price:
-      <input class="form-control" formControlName="productPrice">
+      <input type="text" class="form-control" formControlName="productPrice" required="required">
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Image Url:
-      <input class="form-control" formControlName="imgUrl">
+      <input type="text" class="form-control" formControlName="imgUrl" required="required">
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Product availability:
-      <input class="form-control" formControlName="avail">
+      <input type="number" class="form-control" formControlName="avail" required="required">
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Description:
-      <input class="form-control" formControlName="description">
+      <input type="text" class="form-control" formControlName="description" required="required">
     </label>
   </div>
   <input type="hidden" [value]="currentUser._id" formControlName="user_id">
   <input type="hidden" [value]="currentUser.firstName" formControlName="user_name">
   <input type="hidden" [value]="currentUser._id + '_' +productId" formControlName="id">
-  <button type="submit" [disabled]="addItemForm.pristine">Save</button>
+  <button type="submit" [disabled]="!addItemForm.valid">Save</button>
 </form>

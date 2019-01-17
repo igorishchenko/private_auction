@@ -7,17 +7,17 @@ const routes: Routes = [
   {
     path: 'customers',
     loadChildren: './modules/customers/customers.module#CustomersModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'orders',
     loadChildren: './modules/orders/orders.module#OrdersModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: '',
     loadChildren: './modules/main/main.module#MainModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: './modules/user-profile/user-profile.module#UserProfileModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'register',

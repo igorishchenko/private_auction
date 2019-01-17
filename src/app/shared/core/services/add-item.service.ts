@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable, of} from 'rxjs';
-import { delay } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Item } from '../../models/item';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddItemService {
-
-  delayMs = 1000;
-  newItem = [];
+  public newItem: Array<Item> = [];
 
   constructor(private http: HttpClient) { }
 
   //post request to add and save item
-  saveItem(item: Item){
+  saveItem(item: Item): Observable<any> {
     this.newItem.push(item);
     return this.http.post('http://localhost:8080/api/addItem', item);
   }
+
   //get request to get all items
-  getAllItems() {
+  getAllItems(): Observable<any> {
     return this.http.get('http://localhost:8080/api/products');
   }
 

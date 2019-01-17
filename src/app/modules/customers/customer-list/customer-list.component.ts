@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AddItemService } from '../../../shared/core/services/add-item.service';
-import { Observable } from '../../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-customer-list',
@@ -8,14 +7,12 @@ import { Observable } from '../../../../../node_modules/rxjs';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+  public allItems: any;
+  public showPDP:boolean = true;
+  public path = new RegExp('.*?customers\/[0-9]+');
+  public showProducts = this.path.test(document.URL);
 
   constructor(private itemService: AddItemService) { }
-
-  allItems: any;
-
-  showPDP = true;
-  path = new RegExp('.*?customers\/[0-9]+');
-  showProducts = this.path.test(document.URL);
 
   ngOnInit() {
     this.showPDP = true;
@@ -25,7 +22,7 @@ export class CustomerListComponent implements OnInit {
     });    
   }
   
-  matchUrl(id): boolean {
+  matchUrl(id: number): boolean {
     if (typeof id === 'number')
     this.showPDP = false;
     return this.showPDP;

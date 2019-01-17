@@ -7,13 +7,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public activeIndex: number;
 
   constructor() { }
 
   ngOnInit() {
   }
-  activeIndex: number;
-  activeTab(id: number) {
-    this.activeIndex = id;
+
+  activeTab(id: number): number {
+    return this.activeIndex = id;
   }
 }

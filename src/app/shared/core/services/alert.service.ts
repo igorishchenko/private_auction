@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
 export class AlertService {
 
   private subject = new Subject<any>();
-  private keepAfterNavigationChange = false;
+  private keepAfterNavigationChange: boolean = false;
 
   constructor(private router: Router) {
     //clear alert message on route change
@@ -23,12 +23,12 @@ export class AlertService {
     });
   }
 
-  success(message: string, keepAfterNavigationChange = false) {
+  success(message: string, keepAfterNavigationChange = false): void {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subject.next({ type: 'success', text: message});
   }
 
-  error(message: string, keepAfterNavigationChange = false) {
+  error(message: string, keepAfterNavigationChange = false): void {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subject.next({ type: 'error', text: message});
   }

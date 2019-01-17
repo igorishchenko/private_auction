@@ -1,15 +1,71 @@
 .top-container {
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 72%;
   margin: 0 auto;
-  flex-direction: column;
+  padding: 50px 0;
 }
-.top-container>section {
-  width: 50%;
-  margin: 0 auto;
+.top-container > section {
   padding: 5% 5%;
   color: black;
+  height: 100%;
+}
+.top-container > section:first-child {
+  width: 20%;
+  padding: 0;
+  position: relative;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.top-container > section:first-child  ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.top-container > section:first-child  ul a {
+  width: 100%;
+}
+
+.top-container > section:first-child  ul li:hover {
+  background: rgba(25,25,25,0.14);
+  transition: .35s all;
+}
+
+.top-container > section:first-child ul li {
+  list-style: none;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-container > section:last-child {
+  width: 80%;
+  border: 1px solid black;
+  display: flex;
+  position: relative;
+}
+
+.top-container > section:last-child p.logout {
+  position: absolute;
+  top:50px;
+  right: 50px;
+}
+
+.top-container > section:last-child div {
+  display: flex;
+  flex-direction: column;
+  margin: 0 25px;
+}
+
+.top-container > section:last-child img {
+  width: 250px;
+  height: 250px;
 }

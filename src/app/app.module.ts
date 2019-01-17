@@ -22,7 +22,6 @@ import { AuthService } from './shared/core/services/auth.service';
 import { AlertComponent } from './_directives/alert/alert.component';
 import { AuthGuard } from './shared/core/auth.guard';
 import { UserService } from './shared/core/services/user.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [

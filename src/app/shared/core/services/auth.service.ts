@@ -23,12 +23,10 @@ interface UserGoogle {
   providedIn: 'root'
 })
 export class AuthService {
-
-  user: Observable<UserGoogle>;
-  dbUser: any;
-  firstName: String;
-  lastName: String;
-  userName: String;
+  public user: Observable<UserGoogle>;
+  public dbUser: any;
+  public firstName: String;
+  public lastName: String;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -52,7 +50,7 @@ export class AuthService {
     return this.oAuthLogin(provider);
   }
 
-  private oAuthLogin(provider) {
+  private oAuthLogin(provider: any) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user)

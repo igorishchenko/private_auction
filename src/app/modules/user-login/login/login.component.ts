@@ -14,13 +14,13 @@ import { AlertService } from '../../../shared/core/services/alert.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  user = [];
-  loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
-  googleLogin = false;
-  defaultLogin = true;
+  public user: Array<any> = [];
+  public loginForm: FormGroup;
+  public loading: boolean = false;
+  public submitted: boolean = false;
+  public returnUrl: string;
+  public googleLogin: boolean = false;
+  public defaultLogin: boolean = true;
 
   constructor(
     public db: AngularFirestore, 
@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  googleActive() {
+  googleActive(): void {
     this.googleLogin = true;
     this.defaultLogin = false;
   }
 
-  defaultActive() {
+  defaultActive(): void {
     this.googleLogin = false;
     this.defaultLogin = true;
   }

@@ -12,12 +12,13 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  currentUser: any;
-  users: User[] = [];
-  googleUser = [];
-  loading = true;
-  userInfo: any;
-  userId: any;
+  public currentUser: any;
+  public users: User[] = [];
+  public googleUser: Array<any> = [];
+  public loading: boolean = true;
+  public userId: any;
+  private userInfo: any;
+  public pageAccessor:boolean = true;
 
   constructor(private userService: UserService, private authService: AuthService) {
     
@@ -27,8 +28,10 @@ export class MainComponent implements OnInit {
         this.userId = this.authService.dbUser._id;
     }
     this.currentUser = this.userService.getById(this.userId);
-    this.currentUser.subscribe(currentUser=>{
-        localStorage.setItem('currentUser', JSON.stringify({ firstName: currentUser.firstName, lastName: currentUser.lastName, username: currentUser.username, _id: currentUser._id }));
+    this.currentUser.subscribe(currentUser => {
+        localStorage.setItem('currentUser', JSON.stringify(
+          { firstName: currentUser.firstName, lastName: currentUser.lastName, username: currentUser.username, _id: currentUser._id }
+          ));
         this.userInfo = JSON.parse(localStorage.getItem('currentUser'));
     });
     this.userInfo = JSON.parse(localStorage.getItem('currentUser'));
@@ -37,24 +40,33 @@ export class MainComponent implements OnInit {
   ngOnInit() {
       this.loadAllUsers();
       this.loadGoogleUser();
+      console.log(document.URL);
   }
 
-  deleteUser(id: number) {
-      this.userService.delete(id).pipe(first()).subscribe(() => { 
-          this.loadAllUsers() 
-      });
-  }
+  //This section will delete a user
 
-  private loadGoogleUser() {
+  // deleteUser(id: number) {
+  //     this.userService.delete(id).pipe(first()).subscribe(() => {
+  //         this.loadAllUsers()
+  //     });
+  // }
+
+  private loadGoogleUser(): void {
     this.authService.user.subscribe(data => {
         this.googleUser.push(data);
         this.loading = false;
       });
   }
 
-  private loadAllUsers() {
+  private loadAllUsers(): void {
       this.userService.getAll().pipe(first()).subscribe(users => { 
           this.users = users; 
       });
+  }
+
+  public getDocumentUrl(): void {
+    let matcher = new RegExp('.*?4200\/(.*)');
+    document.URL.match(matcher)[1] ?
+      this.pageAccessor = false : this.pageAccessor = true;
   }
 }

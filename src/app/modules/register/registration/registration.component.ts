@@ -13,9 +13,9 @@ import { UserService } from '../../../shared/core/services/user.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  registerForm: FormGroup;
-  loading = false;
-  submitted = false;
+  public registerForm: FormGroup;
+  public loading: boolean = false;
+  public submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +36,7 @@ export class RegistrationComponent implements OnInit {
   //convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
 
     //stop here if form is invalid

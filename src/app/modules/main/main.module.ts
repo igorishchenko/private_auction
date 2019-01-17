@@ -7,6 +7,9 @@ import { MainComponent } from './main/main.component';
 import { UploadImageComponent } from './main/upload-image/upload-image.component';
 import { AddItemComponent } from '../../shared/core/add-item/add-item.component';
 import { AddItemService } from '../../shared/core/services/add-item.service';
+import { SettingsComponent } from './main/settings/settings.component';
+import { BidsComponent } from './main/bids/bids.component';
+import { YourItemsComponent } from './main/your-items/your-items.component';
 
 @NgModule({
   imports: [
@@ -15,6 +18,6 @@ import { AddItemService } from '../../shared/core/services/add-item.service';
     ReactiveFormsModule
   ],
   providers: [AddItemService],
-  declarations: [MainComponent, UploadImageComponent, AddItemComponent]
+  declarations: [MainComponent, UploadImageComponent, AddItemComponent, SettingsComponent, BidsComponent, YourItemsComponent]
 })
 export class MainModule { }

@@ -5,8 +5,8 @@ import { map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operato
 
 @Injectable()
 export class SearchService {
-  baseUrl: string = 'https://api.cdnjs.com/libraries';
-  queryUrl: string = '?search=';
+  public baseUrl: string = 'https://api.cdnjs.com/libraries';
+  public queryUrl: string = '?search=';
 
   constructor (private http: Http) { }
 

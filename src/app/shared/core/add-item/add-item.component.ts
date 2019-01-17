@@ -10,10 +10,10 @@ import { AddItemService } from '../services/add-item.service';
 })
 export class AddItemComponent implements OnInit {
 
-  addItemForm: FormGroup;
-  itemModel = Item;
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  productId: string;
+  public addItemForm: FormGroup;
+  public currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  public productId: string;
+  public addItemTrue: boolean = false;
 
   constructor(private formBuilder: FormBuilder, 
               private addItemService: AddItemService) {
@@ -25,7 +25,7 @@ export class AddItemComponent implements OnInit {
       productName: ['', Validators.required],
       productPrice: ['', Validators.required],
       imgUrl: ['', Validators.required],
-      avail: ['', Validators.required],
+      avail: ['', Validators.required ],
       description: ['', Validators.required],
       user_id: '',
       user_name: '',
@@ -37,6 +37,7 @@ export class AddItemComponent implements OnInit {
     this.saveFormData();
     this.addItemService.saveItem(this.saveFormData()).subscribe();
     this.rebuildForm();
+    this.addItemTrue = !this.addItemTrue;
   }
   
   rebuildForm() {
