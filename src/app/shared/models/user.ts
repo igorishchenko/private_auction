@@ -4,6 +4,10 @@ export class User {
     password: string;
     firstName: string;
     lastName: string;
+    email?: string;
+    phone?: string;
+    address?: string;
+    description?: string;
 }
 export class googleUser {
     uid: string;

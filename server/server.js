@@ -50,11 +50,19 @@ app.use('/api', apiRoutes);
         res.send(user);
       }
     });
-  })
+  });
 
   apiRoutes.get('/users/:id', (req, res) => {
     User.findOne({_id:req.params.id}, req.body).then((user)=>{
       res.send(user);
+    });
+  });
+
+  apiRoutes.put('/users/:id', (req, res, next) => {
+    User.findByIdAndUpdate({_id: req.params.id}, req.body).then(() => {
+      User.findOne({_id: req.params.id}).then((user) => {
+        res.send(user);
+      })
     });
   });
 

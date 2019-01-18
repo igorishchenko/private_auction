@@ -12,6 +12,10 @@
         <img src="../../../../assets/images/image1.jpg" alt="">
         <div>
           <h2>{{userInfo.username}} ({{userInfo.firstName}} {{userInfo.lastName}})</h2>
+          <p>Your Email: {{ User.email }}</p>
+          <p>Phone: {{ User.phone }}</p>
+          <p>Address: {{ User.address }}</p>
+          <p>Description: {{ User.description }}</p>
           <app-add-item></app-add-item>
         </div>
         <p class="logout"><a [routerLink]="['/login']">Logout</a></p>

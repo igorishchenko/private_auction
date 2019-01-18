@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User, googleUser } from '../../../shared/models/user';
+import { User } from '../../../shared/models/user';
 import { UserService } from '../../../shared/core/services/user.service';
 import { AuthService } from '../../../shared/core/services/auth.service';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -13,6 +12,7 @@ import { Observable, of } from 'rxjs';
 })
 export class MainComponent implements OnInit {
   public currentUser: any;
+  public User =  new Object();
   public users: User[] = [];
   public googleUser: Array<any> = [];
   public loading: boolean = true;
@@ -33,6 +33,7 @@ export class MainComponent implements OnInit {
           { firstName: currentUser.firstName, lastName: currentUser.lastName, username: currentUser.username, _id: currentUser._id }
           ));
         this.userInfo = JSON.parse(localStorage.getItem('currentUser'));
+        this.User = currentUser;
     });
     this.userInfo = JSON.parse(localStorage.getItem('currentUser'));
   }
@@ -40,7 +41,6 @@ export class MainComponent implements OnInit {
   ngOnInit() {
       this.loadAllUsers();
       this.loadGoogleUser();
-      console.log(document.URL);
   }
 
   //This section will delete a user
@@ -59,8 +59,8 @@ export class MainComponent implements OnInit {
   }
 
   private loadAllUsers(): void {
-      this.userService.getAll().pipe(first()).subscribe(users => { 
-          this.users = users; 
+      this.userService.getAll().pipe(first()).subscribe(users => {
+          this.users = users;
       });
   }
 

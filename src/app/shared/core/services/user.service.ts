@@ -22,11 +22,11 @@ export class UserService {
     return this.http.post('http://localhost:8080/setup', user);
   }
 
-  update(user: User) {
-    return this.http.put('http://localhost:8080/api/users/' + user._id, user);
-  }
-
   delete(id: number) {
     return this.http.delete('http://localhost:8080/api/users/' + id);
+  }
+  // User settings
+  update(user: User) {
+    return this.http.put('http://localhost:8080/api/users/' + user._id, user);
   }
 }
