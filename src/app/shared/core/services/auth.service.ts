@@ -70,7 +70,6 @@ export class AuthService {
     }
     return userRef.set(data, { merge: true });
   }
-  
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
@@ -81,11 +80,12 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post<{email: string, password: string}>
     ('http://vis.net.ua/vis-auction/public/api/login', { email: email, password: password })
-      .pipe(map(user => {
-        JSON.stringify(user);
-        this.dbUser = user;
-        return user;
-      }));
+      .pipe(
+        map(user => {
+          JSON.stringify(user);
+          this.dbUser = user;
+          return user;
+        }));
   }
 
   logout() {

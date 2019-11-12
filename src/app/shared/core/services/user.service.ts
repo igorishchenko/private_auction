@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../../models/user';
+import { Profile, AuthData } from '../../models/profile';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +16,12 @@ export class UserService {
     // return this.http.get<User[]>('http://vis.net.ua/vis-auction/public/oauth/clients');
   }
 
-  getProfile(userData): any {
+  getProfile(authData: AuthData): Observable<Profile> {
     const httpOptions = {headers: new HttpHeaders({
       Accept: 'application/json',
-      Authorization: `${userData.token_type} ${userData.token}`
+      Authorization: `${authData.token_type} ${authData.token}`
     })};
-    // const formattedUserData = {
-    //   Accept: 'application/json',
-    //   Authorization: `${userData.token_type} ${userData.token}`
-    // };
-    // headers = headers.append('Accept', formattedUserData.Accept);
-    // headers = headers.append('Authorization', formattedUserData.Authorization);
-    return this.http.post<any>('http://vis.net.ua/vis-auction/public/api/profile', '', httpOptions);
+    return this.http.post<Profile>('http://vis.net.ua/vis-auction/public/api/profile', '', httpOptions);
   }
 
   create(user: User) {

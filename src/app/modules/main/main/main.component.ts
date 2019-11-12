@@ -4,6 +4,7 @@ import { first } from 'rxjs/operators';
 import { User } from '../../../shared/models/user';
 import { UserService } from '../../../shared/core/services/user.service';
 import { AuthService } from '../../../shared/core/services/auth.service';
+import { AuthData } from 'src/app/shared/models/profile';
 
 @Component({
   selector: 'app-main',
@@ -43,9 +44,8 @@ export class MainComponent implements OnInit {
       this.getProfile(this.authService.dbUser);
   }
 
-  getProfile(userData) {
+  getProfile(userData: AuthData) {
     this.userService.getProfile(userData).subscribe(res => {
-      console.log(res);
       return res;
     });
   }
