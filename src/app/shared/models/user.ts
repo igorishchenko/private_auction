@@ -1,12 +1,16 @@
 export class User {
     _id: number;
     username: string;
+    email: string;
+    email_verified_at?: Date;
     password: string;
+    remember_token?: string;
+    created_at?: Date;
+    updated_at?: Date;
     firstName: string;
     lastName: string;
-    email?: string;
-    phone?: string;
-    address?: string;
+    phone: string;
+    address: string;
     description?: string;
 }
 export class googleUser {

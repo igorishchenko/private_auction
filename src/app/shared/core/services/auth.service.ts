@@ -78,8 +78,9 @@ export class AuthService {
     });
   }
 
-  login(username: string, password: string) {
-    return this.http.post<any>('http://localhost:8080/api/authenticate', { username: username, password: password })
+  login(email: string, password: string) {
+    return this.http.post<{email: string, password: string}>
+    ('http://vis.net.ua/vis-auction/public/api/login', { email: email, password: password })
       .pipe(map(user => {
         JSON.stringify(user);
         this.dbUser = user;

@@ -8,7 +8,7 @@ import { AddItemService } from '../../../shared/core/services/add-item.service';
 })
 export class CustomerListComponent implements OnInit {
   public allItems: any;
-  public showPDP:boolean = true;
+  public showPDP: boolean = true;
   public path = new RegExp('.*?customers\/[0-9]+');
   public showProducts = this.path.test(document.URL);
 
@@ -19,12 +19,13 @@ export class CustomerListComponent implements OnInit {
 
     this.itemService.getAllItems().subscribe(data => {
       this.allItems = data;
-    });    
+    });
   }
-  
+
   matchUrl(id: number): boolean {
-    if (typeof id === 'number')
-    this.showPDP = false;
+    if (typeof id === 'number') {
+      this.showPDP = false;
+    }
     return this.showPDP;
   }
 

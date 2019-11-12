@@ -31,7 +31,7 @@ export class SettingsComponent implements OnInit {
 
   onSubmit() {
     this.saveFormData();
-    this.user.update(this.saveFormData()).subscribe();
+    // this.user.update(this.saveFormData()).subscribe();
   }
 
   saveFormData() {
@@ -59,9 +59,9 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user.getById(this.currentUser._id).subscribe(userData => {
-      this.currentUser = userData;
-    });
+    // this.user.getById(this.currentUser._id).subscribe(userData => {
+    //   this.currentUser = userData;
+    // });
   }
 
 }
