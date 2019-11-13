@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       });
 
       //reset login status
-      this.auth.logout();
+      // this.auth.logout();
 
       //get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.auth.login(this.f.email.value, this.f.password.value)
+    this.auth.login({email: this.f.email.value, password: this.f.password.value})
       .pipe(first())
       .subscribe(
         data => {

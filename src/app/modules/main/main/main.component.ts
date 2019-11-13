@@ -41,13 +41,11 @@ export class MainComponent implements OnInit {
   ngOnInit() {
       // this.loadAllUsers();
       // this.loadGoogleUser();
-      this.getProfile(this.authService.dbUser);
+      this.getProfile();
   }
 
-  getProfile(userData: AuthData) {
-    this.userService.getProfile(userData).subscribe(res => {
-      return res;
-    });
+  getProfile() {
+    this.userService.getProfile().subscribe(res => res);
   }
 
   //This section will delete a user

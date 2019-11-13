@@ -16,10 +16,11 @@ export class UserService {
     // return this.http.get<User[]>('http://vis.net.ua/vis-auction/public/oauth/clients');
   }
 
-  getProfile(authData: AuthData): Observable<Profile> {
+  getProfile(): Observable<Profile> {
+    const token = localStorage.getItem('JWT_TOKEN');
     const httpOptions = {headers: new HttpHeaders({
       Accept: 'application/json',
-      Authorization: `${authData.token_type} ${authData.token}`
+      Authorization: `Bearer ${token}`
     })};
     return this.http.post<Profile>('http://vis.net.ua/vis-auction/public/api/profile', '', httpOptions);
   }
