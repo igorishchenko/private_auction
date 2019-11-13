@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="profileObservable$ | async as profile">
   <nav>
     <a href="">qqq</a>
     <a href="">www</a>
@@ -6,16 +6,9 @@
     <a href="">ttt</a>
     <a href="">yyy</a>
   </nav>
-  <section class="profile-data">
-    <div class="img">
-      <img src="" alt="">
-    </div>
-    <div class="data">
-      <p class="username"></p>
-      <p class="full-name"></p>
-      <p class="phone"></p>
-      <p class="address"></p>
-      <p class="description"></p>
-    </div>
-  </section>
+  <div class="profile-container">
+      <app-profile-data 
+        [profile]="profile.success"
+      ></app-profile-data>
+  </div>
 </main>
