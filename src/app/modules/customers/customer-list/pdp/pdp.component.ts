@@ -4,7 +4,7 @@ import { AddItemService } from '../../../../shared/core/services/add-item.servic
 @Component({
   selector: 'app-pdp',
   templateUrl: './pdp.component.html',
-  styleUrls: ['./pdp.component.css']
+  styleUrls: ['./pdp.component.scss']
 })
 export class PdpComponent implements OnInit {
 
