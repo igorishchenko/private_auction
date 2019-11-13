@@ -47,12 +47,12 @@ export class LoginComponent implements OnInit {
   ngOnInit () {
       this.user = [];
       this.loginForm = this.fb.group({
-        username: ['', Validators.required],
+        email: ['', Validators.required],
         password: ['', Validators.required]
       });
 
       //reset login status
-      this.auth.logout();
+      // this.auth.logout();
 
       //get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -69,10 +69,11 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.auth.login(this.f.username.value, this.f.password.value)
+    this.auth.login({email: this.f.email.value, password: this.f.password.value})
       .pipe(first())
       .subscribe(
         data => {
+          console.log(data);
           this.router.navigate([this.returnUrl]);
         },
         error => {

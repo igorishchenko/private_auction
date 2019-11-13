@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "testModules"
+  "defaultProject": "testModules",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

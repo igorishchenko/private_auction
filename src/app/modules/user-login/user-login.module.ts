@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { UserLoginRoutingModule } from './user-login-routing.module';
 import { LoginComponent } from './login/login.component';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs';
-import * as firebase from 'firebase/app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/app/shared/core/interceptors/token-interceptor';
 
 @NgModule({
   imports: [
@@ -15,6 +13,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserLoginRoutingModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   declarations: [LoginComponent]
 })

@@ -4,9 +4,9 @@
             <a href="">Site Logo</a>
         </div>
         <ul class="d-flex flex-row list-unstyled m-0">
-            <li (click)="activeTab(1)" [ngClass]="{'active': activeIndex == 1}" class="pl-4 pr-4"><a routerLink="">Profile</a></li>
-            <li (click)="activeTab(2)" [ngClass]="{'active': activeIndex == 2}" class="pl-4 pr-4"><a routerLink="/customers">Customers</a></li>
-            <li (click)="activeTab(3)" [ngClass]="{'active': activeIndex == 3}" class="pl-4 pr-4"><a routerLink="/orders">Orders</a></li>
+            <li class="pl-4 pr-4"><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+            <li class="pl-4 pr-4"><a routerLink="/customers" routerLinkActive="active">Customers</a></li>
+            <li class="pl-4 pr-4"><a routerLink="/orders" routerLinkActive="active">Orders</a></li>
         </ul>
         <app-search></app-search>
     </div>

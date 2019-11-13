@@ -28,8 +28,11 @@
       <input type="text" class="form-control" formControlName="description" required="required">
     </label>
   </div>
-  <input type="hidden" [value]="currentUser._id" formControlName="user_id">
-  <input type="hidden" [value]="currentUser.firstName" formControlName="user_name">
-  <input type="hidden" [value]="currentUser._id + '_' +productId" formControlName="id">
+  <div class="form-group">
+    <label class="center-block">Category:
+      <input type="text" class="form-control" formControlName="category_id" required="required">
+    </label>
+  </div>
+  <input type="hidden" [value]="currentUser._id" formControlName="owner_user_id">
   <button type="submit" [disabled]="!addItemForm.valid">Save</button>
 </form>
