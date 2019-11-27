@@ -1,14 +1,23 @@
 <main *ngIf="profileObservable$ | async as profile">
   <nav>
-    <a href="">qqq</a>
-    <a href="">www</a>
-    <a href="">eeee</a>
-    <a href="">ttt</a>
-    <a href="">yyy</a>
+    <a href="" (click)="openBlock($event, 'profile')">Profile</a>
+    <a href="" (click)="openBlock($event, 'products')">My Products</a>
+    <a href="" (click)="openBlock($event, 'statistics')">Statistics</a>
+    <a href="" (click)="openBlock($event, 'settings')">Settings</a>
   </nav>
   <div class="profile-container">
       <app-profile-data 
+        *ngIf="blocksVisibility.profile"
         [profile]="profile.success"
       ></app-profile-data>
+      <app-profile-products
+        *ngIf="blocksVisibility.products"
+      ></app-profile-products>
+      <app-profile-statistics
+        *ngIf="blocksVisibility.statistics"
+      ></app-profile-statistics>
+      <app-profile-settings
+        *ngIf=blocksVisibility.settings
+      ></app-profile-settings>
   </div>
 </main>

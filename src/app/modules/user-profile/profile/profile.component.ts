@@ -11,11 +11,24 @@ import { Observable } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
   profileObservable$: Observable<Profile>;
+  blocksVisibility = {
+    profile: true,
+    products: false,
+    statistics: false,
+    settings: false
+  }
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.getProfile();
+  }
+
+  openBlock(event: any, blockName: string): void {
+    event.preventDefault();
+    Object.keys(this.blocksVisibility).map(res => {
+      this.blocksVisibility[res] = res === blockName;
+    });
   }
 
   getProfile(): Observable<Profile> {
