@@ -1,17 +1,16 @@
 #collection-container {
     padding: 5%;
-    width: 74%;
+    width: 85%;
     display: flex;
-    justify-content: space-around;
     margin: 0 auto;
     flex-wrap: wrap;
     height: 100%;
 }
 .product_article {
-    width: 23%;
+    width: 200px;
     height: 100%;
     margin: 30px;
-    box-shadow: 1px 2px 29px -14px black;
+    box-shadow: 0px 0px 11px -6px black;
     transition: 0.2s all;
 }
 .product_article img {

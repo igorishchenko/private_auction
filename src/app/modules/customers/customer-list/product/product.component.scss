@@ -1,0 +1,15 @@
+section {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+
+    .left-info {
+        width: calc(50% - 10px);
+        margin-right: 10px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

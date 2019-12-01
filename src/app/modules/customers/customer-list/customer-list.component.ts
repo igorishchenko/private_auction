@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddItemService } from '../../../shared/core/services/add-item.service';
+import { CategoryService } from 'src/app/shared/core/services/category.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -11,8 +12,12 @@ export class CustomerListComponent implements OnInit {
   public showPDP: boolean = true;
   public path = new RegExp('.*?customers\/[0-9]+');
   public showProducts = this.path.test(document.URL);
+  categories$: any;
 
-  constructor(private itemService: AddItemService) { }
+  constructor(
+    private itemService: AddItemService,
+    private catService: CategoryService
+  ) { }
 
   ngOnInit() {
     this.showPDP = true;
@@ -20,13 +25,7 @@ export class CustomerListComponent implements OnInit {
     this.itemService.getAllItems().subscribe(data => {
       this.allItems = data;
     });
-  }
 
-  matchUrl(id: number): boolean {
-    if (typeof id === 'number') {
-      this.showPDP = false;
-    }
-    return this.showPDP;
+    this.categories$ = this.catService.getAllCategories();
   }
-
 }

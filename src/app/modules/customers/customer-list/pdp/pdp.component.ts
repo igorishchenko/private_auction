@@ -1,31 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AddItemService } from '../../../../shared/core/services/add-item.service';
+import { Route } from '@angular/compiler/src/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { CategoryService } from 'src/app/shared/core/services/category.service';
+import { takeUntil } from 'rxjs/operators';
+import { ReplaySubject, Observable } from 'rxjs';
+import { Item } from 'src/app/shared/models/item';
 
 @Component({
   selector: 'app-pdp',
   templateUrl: './pdp.component.html',
   styleUrls: ['./pdp.component.scss']
 })
-export class PdpComponent implements OnInit {
+export class PdpComponent implements OnInit, OnDestroy {
+  currentCategory: any;
+  categoryName: Params = null;
+  products: Item[] = null;
+  private onDestroy$: ReplaySubject<any> = new ReplaySubject<any>(1);
+  categoryItems$: any;
 
-  item: any;
-  currentProduct: any;
-
-  constructor(private itemService: AddItemService) { }
-
-  ngOnInit() {
-    this.itemService.getAllItems().subscribe(data => {
-      this.item = data;
-      for (const res in this.item) {
-        if (this.item.hasOwnProperty(res)) {
-          const element = this.item[res];
-          if (document.URL.replace(/.*?customers\/(.*?)/g,"$1") == element.id) {
-            this.currentProduct = {...element};
-            JSON.stringify(this.currentProduct);
-          }
-        }
-      }
-    }); 
+  constructor(
+    private route: ActivatedRoute,
+    private catService: CategoryService,
+    private itemService: AddItemService
+  ) { 
+    this.categoryName = this.route.snapshot.params;
   }
 
+  ngOnInit() {
+    this.getCategory();
+  }
+
+  getCategory(): void {
+    this.catService.getAllCategories().pipe(
+      takeUntil(this.onDestroy$)
+    ).subscribe(cat => {
+      this.currentCategory = cat.filter(res => res.categoryName === this.categoryName['cat-name'])[0];
+      this.getCategoryItems();
+    });
+  }
+
+  getCategoryItems(): void {
+    this.itemService.getItemsByCategory(this.currentCategory.id).pipe(
+      takeUntil(this.onDestroy$)
+    ).subscribe(res => this.products = res.products);
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next(null);
+    this.onDestroy$.complete();
+  }
 }

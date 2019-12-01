@@ -164,4 +164,13 @@ export class AuthService {
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem(this.REFRESH_TOKEN);
   }
+
+  getHttpOptions(): any {
+    const token = localStorage.getItem('JWT_TOKEN');
+    const httpOptions = {headers: new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`
+    })};
+    return httpOptions;
+  }
 }

@@ -1,0 +1,18 @@
+<section *ngIf="item$ | async as item">
+  <div class="left-info">
+    <img [src]="item.imgUrl" alt="">
+  </div>
+  <div class="rigth-info">
+    <h1 itemprop="title">{{item.productName}}</h1>
+    <p class="name">Owner name: {{item.owner_user_name[0].firstName}} {{item.owner_user_name[0].lastName}}</p>
+    <p itemprop="description" class="description"><span>Description:</span> {{item.description}}</p>
+
+    <h2 class="price" itemprop="price">Starting price - {{item.productPrice}}</h2>
+    <h3>Buyout price - {{item.buyout_price ? item.buyout_price : 'only bids'}}</h3>
+    <p class="bid-price">Last bid on product - {{item.price_last_bid ? item.price_last_bid : 'no bids yet'}}</p>
+    <div class="buttons">
+      <button class="bid" (click)="bidItem(item)">Bid</button>
+      <button *ngIf="item.buyout_price" class="buyout" (click)="biuyoutItem()">Buyout</button>
+    </div>
+  </div>
+</section>
