@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  profileObservable$: any;
 
   constructor(private http: HttpClient) { }
 
@@ -17,12 +18,20 @@ export class UserService {
   }
 
   getProfile(): Observable<Profile> {
+    if (this.profileObservable$) {
+      return this.profileObservable$;
+    }
     const token = localStorage.getItem('JWT_TOKEN');
     const httpOptions = {headers: new HttpHeaders({
       Accept: 'application/json',
       Authorization: `Bearer ${token}`
     })};
-    return this.http.post<Profile>('http://vis.net.ua/vis-auction/public/api/profile', '', httpOptions);
+    this.profileObservable$ = this.http.post<Profile>('http://vis.net.ua/vis-auction/public/api/profile', '', httpOptions);
+    return this.profileObservable$;
+  }
+
+  userLots(id: number): Observable<any> {
+    return this.http.get('http://vis.net.ua/vis-auction/public/api/products/user/' + id);
   }
 
   create(user: User) {

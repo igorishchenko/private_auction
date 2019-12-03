@@ -1,0 +1,10 @@
+<section id="pdp-container">
+  <div class="product_article product_1" *ngFor="let item of lots$ | async">
+    <img [src]="item.imgUrl" alt="">
+    <div class="description">
+      <a [routerLink]="['/customers', 'category', item.id]" class="product_link" itemprop="url">
+        <span itemprop="name">{{ item.productName }}</span>
+      </a>
+    </div>
+  </div>
+</section>

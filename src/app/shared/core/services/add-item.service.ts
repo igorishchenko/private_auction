@@ -19,7 +19,7 @@ export class AddItemService {
   //post request to add and save item
   saveItem(item: SaveItem): Observable<any> {
     this.newItem.push(item);
-    return this.http.post('http://vis.net.ua/vis-auction/public/api/products', item);
+    return this.http.post('http://vis.net.ua/vis-auction/public/api/products', item, this.authService.getHttpOptions());
   }
 
   //get request to get all items

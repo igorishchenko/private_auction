@@ -15,6 +15,10 @@ export class CategoryService {
   }
 
   createCategory(catData: CreateCategory): Observable<Category> {
-    return this.http.post<Category>('http://vis.net.ua/vis-auction/public/api/http://vis.net.ua/vis-auction/public/api/profile', catData);
+    return this.http.post<Category>('http://vis.net.ua/vis-auction/public/api/profile', catData);
+  }
+
+  categoryById(id: number): Observable<any> {
+    return this.http.get('http://vis.net.ua/vis-auction/public/api/categories/' + id);
   }
 }

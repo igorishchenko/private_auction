@@ -1,23 +1,11 @@
-<main *ngIf="profileObservable$ | async as profile">
+<main>
   <nav>
-    <a href="" (click)="openBlock($event, 'profile')">Profile</a>
-    <a href="" (click)="openBlock($event, 'products')">My Products</a>
-    <a href="" (click)="openBlock($event, 'statistics')">Statistics</a>
-    <a href="" (click)="openBlock($event, 'settings')">Settings</a>
+    <a [routerLink]="['data']" routerLinkActive="current">Profile</a>
+    <a [routerLink]="['lots']" routerLinkActive="current">My Lots</a>
+    <a [routerLink]="['history-bids']" routerLinkActive="current">Bid history</a>
+    <a [routerLink]="['statistics']" routerLinkActive="current">Statistics</a>
   </nav>
   <div class="profile-container">
-      <app-profile-data 
-        *ngIf="blocksVisibility.profile"
-        [profile]="profile.success"
-      ></app-profile-data>
-      <app-profile-products
-        *ngIf="blocksVisibility.products"
-      ></app-profile-products>
-      <app-profile-statistics
-        *ngIf="blocksVisibility.statistics"
-      ></app-profile-statistics>
-      <app-profile-settings
-        *ngIf=blocksVisibility.settings
-      ></app-profile-settings>
+    <router-outlet></router-outlet>
   </div>
 </main>

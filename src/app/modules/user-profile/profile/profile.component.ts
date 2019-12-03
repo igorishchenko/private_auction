@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from 'src/app/shared/core/services/user.service';
 import { Profile } from 'src/app/shared/models/profile';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -10,32 +11,9 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None
 })
 export class ProfileComponent implements OnInit {
-  profileObservable$: Observable<Profile>;
-  blocksVisibility = {
-    profile: true,
-    products: false,
-    statistics: false,
-    settings: false
-  }
-
-  constructor(private userService: UserService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.getProfile();
+    this.router.navigate(['profile/data']);
   }
-
-  openBlock(event: any, blockName: string): void {
-    event.preventDefault();
-    Object.keys(this.blocksVisibility).map(res => {
-      this.blocksVisibility[res] = res === blockName;
-    });
-  }
-
-  getProfile(): Observable<Profile> {
-    if (this.profileObservable$) {
-      return;
-    }
-    this.profileObservable$ = this.userService.getProfile();
-  }
-
 }
