@@ -45,4 +45,8 @@ export class UserService {
   update(user: User) {
     return this.http.put<User[]>('http://vis.net.ua/vis-auction/public/oauth/clients/' + user._id, user);
   }
+
+  bitsByUser(userId: number): Observable<any> {
+    return this.http.get('http://vis.net.ua/vis-auction/public/api/betHistory/user/' + userId);
+  }
 }
