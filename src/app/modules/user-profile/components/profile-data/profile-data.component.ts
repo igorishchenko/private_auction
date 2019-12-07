@@ -60,7 +60,8 @@ export class ProfileDataComponent implements OnInit, AfterViewInit {
     this.addItemForm.controls.imgUrl.setValue('http://obediznichego.ru/wp-content/uploads/2012/08/IMG_6522.jpg');
     const formValue = {...this.addItemForm.value, category_id: +this.addItemForm.controls.category_id.value};
     this.itemService.saveItem(formValue).subscribe(res => {
-      console.log(res);
+      this.addItemForm.reset();
+      alert('Added!');
     });
   }
 }

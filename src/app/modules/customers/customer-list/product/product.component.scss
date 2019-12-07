@@ -1,15 +1,31 @@
 section {
     display: flex;
-    justify-content: space-between;
-    width: 85%;
-    margin: 0 auto;
+    width: 72%;
+    margin: 45px auto;
+    box-shadow: 0px 0px 11px -6px black;
+    padding: 35px;
 
     .left-info {
-        width: calc(50% - 10px);
-        margin-right: 10px;
+        margin-right: 60px;
 
         img {
-            width: 100%;
+            width: 300px;
+            height: 300px;
+        }
+    }
+
+    .bid {
+        width: 200px;
+        height: 45px;
+        background: #464545;
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: all .4s;
+
+        &:hover {
+            background: #3b3b3b;
         }
     }
 }

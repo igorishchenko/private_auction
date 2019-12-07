@@ -8,15 +8,16 @@
     height: 100%;
 }
 .product_article {
-    width: 23%;
+    width: 220px !important;
     height: 100%;
     margin: 30px;
-    box-shadow: 1px 2px 29px -14px black;
+    padding: 20px;
+    box-shadow: 0px 0px 11px -6px black;
     transition: 0.2s all;
 }
 .product_article img {
     width: 100%;
-    height: auto;
+    height: 80% !important;
 }
 a {
     text-decoration: none;
@@ -28,4 +29,5 @@ a {
 .description {
     margin: 10px 0;
     padding: 10px 20px;
+    text-align: center;
 }

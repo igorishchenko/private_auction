@@ -1,39 +1,63 @@
 <section class="profile-data">
-  <div class="img">
-    <img src="//miro.medium.com/max/1476/1*bGpc4O2roZz7MCLdkleoxw.png" alt="">
-  </div>
-  <div class="data" *ngIf="profile">
-    <div class="username">Username: {{profile.username}}</div>
-    <div class="full-name">Full name: <span>{{profile.firstName + ' '}}</span><span>{{profile.lastName}}</span></div>
-    <div class="phone">Phone: {{profile.phone}}</div>
-    <div class="address">Address: {{profile.address}}</div>
-    <div class="description">Description: {{profile.description}}</div>
-    <div class="count-bet">Total bets: {{profile.count_bets}}</div>
-    <div class="count-lot">Total lot: {{profile.count_lots}}</div>
-    <button (click)="isAddLot=true">Add lot!</button>
+  <div class="left-profile">
+    <div class="img">
+      <img src="//miro.medium.com/max/1476/1*bGpc4O2roZz7MCLdkleoxw.png" alt="">
+    </div>
+    <div class="data" *ngIf="profile">
+      <div class="username">Username: {{profile.username}}</div>
+      <div class="full-name">Full name: <span>{{profile.firstName + ' '}}</span><span>{{profile.lastName}}</span></div>
+      <div class="phone">Phone: {{profile.phone}}</div>
+      <div class="address">Address: {{profile.address}}</div>
+      <div class="description">Description: {{profile.description}}</div>
+      <div class="count-bet">Total bets: {{profile.count_bets}}</div>
+      <div class="count-lot">Total lot: {{profile.count_lots}}</div>
+      <button (click)="isAddLot=true">Add lot!</button>
+    </div>
   </div>
   <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()" action="" class="add-item" *ngIf="isAddLot">
     <h1>Add Item form</h1>
-    Name
-    <input 
-      type="text"
-      formControlName="productName"
-    >
-    Price
-    <input 
-      type="number"
-      formControlName="productPrice"
-    >
-    Avail
-    <input 
-      type="number"
-      formControlName="avail"
-    >
-    Description
-    <textarea formControlName="description" name="" id="" cols="30" rows="10"></textarea>
-    <select name="" id="" formControlName="category_id">
-      <option [value]="cat.id" *ngFor="let cat of allCategories$ | async">{{cat.categoryName}}</option>
-    </select>
-    <button type="submit">Add!</button>
+    <div class="form-container">
+      <div class="sides">
+        <div>
+          <label for="productName">Name</label> <br> 
+          <input 
+            id="productName"
+            placeholder="Product name"
+            type="text"
+            formControlName="productName"
+          >
+        </div>
+        <div>
+          <label for="productPrice">Price</label> <br>
+          <input 
+            id="productPrice"
+            placeholder="Product price"
+            type="number"
+            formControlName="productPrice"
+          >  
+        </div>
+        <div>
+          <label for="avail">Avail</label> <br>
+          <input 
+            id="avail"
+            placeholder="availability"
+            type="number"
+            formControlName="avail"
+          >
+        </div>
+      </div>
+      <div class="sides">
+        <div>
+          <label for="description">Description</label> <br>
+          <textarea id="description" placeholder="Product description" formControlName="description"></textarea>
+        </div>
+        <div>
+          <select name="" id="category_id" formControlName="category_id">
+            <option [value]="cat.id" *ngFor="let cat of allCategories$ | async">{{cat.categoryName}}</option>
+          </select>
+        </div>
+        <button type="submit">Add!</button>
+      </div>
+    </div>
   </form>
 </section>

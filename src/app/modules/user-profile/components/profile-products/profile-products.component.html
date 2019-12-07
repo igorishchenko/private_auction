@@ -3,7 +3,7 @@
     <img [src]="item.imgUrl" alt="">
     <div class="description">
       <a [routerLink]="['/customers', 'category', item.id]" class="product_link" itemprop="url">
-        <span itemprop="name">{{ item.productName }}</span>
+        <span itemprop="name">{{ item.productName }}</span><br>
         <span>Last bid: {{usersBids[i].bet}}</span>
       </a>
     </div>

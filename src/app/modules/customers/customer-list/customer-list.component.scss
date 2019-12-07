@@ -1,10 +1,11 @@
 #collection-container {
-    padding: 5%;
+    padding: 25px;
     width: 85%;
     display: flex;
-    margin: 0 auto;
+    margin: 25px auto;
     flex-wrap: wrap;
     height: 100%;
+    box-shadow: 0px 0px 11px -6px black;
 }
 .product_article {
     width: 200px;
