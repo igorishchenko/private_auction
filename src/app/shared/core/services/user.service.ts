@@ -17,6 +17,15 @@ export class UserService {
     // return this.http.get<User[]>('http://vis.net.ua/vis-auction/public/oauth/clients');
   }
 
+  getStatistics(): Observable<any> {
+    const token = localStorage.getItem('JWT_TOKEN');
+    const httpOptions = {headers: new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`
+    })};
+    return this.http.get('http://vis.net.ua/vis-auction/public/api/statistic', httpOptions);
+  }
+  
   getProfile(): Observable<Profile> {
     if (this.profileObservable$) {
       return this.profileObservable$;

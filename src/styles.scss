@@ -12,3 +12,11 @@ section#pdp-container {
         margin: 10px;
     }
 }
+
+.product_article .description {
+    white-space: nowrap;    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+    text-align: center;
+}
