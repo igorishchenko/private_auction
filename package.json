@@ -23,7 +23,7 @@
     "@ng-bootstrap/ng-bootstrap": "^2.0.0",
     "angular2-fontawesome": "^5.2.1",
     "angularfire2": "^5.0.0-rc.11",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "core-js": "^2.5.4",
     "firebase": "^5.0.4",
     "font-awesome": "^4.7.0",
